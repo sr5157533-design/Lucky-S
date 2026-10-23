@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucky-S | Login</title>
+<meta name="description" content="Lucky-S par videos aur photos dekhein aur share karein.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#1769e0">
+<meta property="og:title" content="Lucky-S - Video & Photo Platform">
+<meta property="og:description" content="Videos aur photos share karne ke liye Lucky-S par aayein.">
+<style>
+:root{--blue:#1769e0;--deep:#104db0;--pale:#eef5ff;--ink:#17233b;--muted:#66748b;--line:#dbe5f3;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#f5f8fe}
+button,input{font:inherit}button{cursor:pointer;border:0}
+.topbar{height:68px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:5}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:23px;color:var(--blue)}.logo{width:38px;height:38px;border-radius:12px;background:var(--blue);color:white;display:grid;place-items:center;font-size:20px}
+.top-note{font-size:13px;color:var(--muted)}
+.login-wrap{min-height:calc(100vh - 68px);display:grid;grid-template-columns:1fr 440px;gap:45px;align-items:center;max-width:1100px;margin:auto;padding:42px 25px}
+.hero{padding:20px}.hero-pill{display:inline-block;background:#e2edff;color:var(--deep);padding:9px 13px;border-radius:30px;font-weight:700;font-size:13px}
+.hero h1{font-size:clamp(34px,5vw,54px);line-height:1.12;margin:22px 0 15px;letter-spacing:-1.4px}.hero h1 span{color:var(--blue)}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:480px}
+.features{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.feature{background:white;border:1px solid var(--line);padding:12px 15px;border-radius:13px;font-size:14px;font-weight:700}
+.card{background:white;border:1px solid var(--line);box-shadow:0 18px 55px #1a4e8e12;border-radius:24px;padding:28px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:#f0f5fc;border-radius:12px;padding:4px;margin-bottom:22px}.tab{padding:12px;border-radius:9px;background:transparent;color:var(--muted);font-weight:700}.tab.active{background:white;color:var(--blue);box-shadow:0 2px 8px #0c326b12}
+.card h2{margin:0 0 7px;font-size:25px}.sub{margin:0 0 22px;color:var(--muted);font-size:14px}
+.field{margin:15px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}.field input{width:100%;padding:13px 14px;border:1px solid #cfdced;border-radius:11px;outline:none;background:#fff}.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769e018}
+.primary{width:100%;background:var(--blue);color:white;font-weight:800;padding:14px;border-radius:11px;margin-top:8px}.primary:hover{background:var(--deep)}.smallprint{font-size:11px;color:var(--muted);line-height:1.55;margin-top:15px}.error{display:none;color:#b42318;background:#fff0ef;border-radius:9px;padding:10px;font-size:13px;margin-bottom:10px}
+.app{display:none;max-width:1100px;margin:26px auto;padding:0 20px}.app-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.app-head h1{margin:0}.secondary{background:#e6efff;color:var(--deep);padding:10px 14px;border-radius:10px;font-weight:700}
+.toolbar{display:flex;gap:10px;margin:22px 0;flex-wrap:wrap}.toolbar input{flex:1;min-width:190px;padding:12px;border:1px solid var(--line);border-radius:10px}.uploadbox{background:#fff;border:1px dashed #8bb2ef;padding:22px;border-radius:16px;margin:18px 0}.uploadbox h3{margin:0 0 7px}.uploadbox p{font-size:13px;color:var(--muted)}.uploadbox input{max-width:100%;margin:8px 0}.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}.item{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}.item img,.item video{width:100%;max-height:270px;object-fit:cover;background:#eaf1fb;display:block}.item .caption{padding:13px}.item .caption strong{display:block;overflow-wrap:anywhere}.item .caption small{color:var(--muted)}.empty{background:white;border:1px solid var(--line);border-radius:15px;padding:30px;text-align:center;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:24px}
+@media(max-width:800px){.login-wrap{grid-template-columns:1fr;gap:20px;padding:25px 16px}.hero{padding:8px}.hero h1{font-size:38px}.card{padding:23px}.topbar{padding:0 17px}.top-note{font-size:11px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="logo">▶</div>Lucky-S</div>
+  <div class="top-note">Video • Photo • Community</div>
+</header>
+
+<main id="loginPage" class="login-wrap">
+  <section class="hero">
+    <div class="hero-pill">✨ Aapki apni video-photo duniya</div>
+    <h1>Apni kahani<br><span>share karo.</span></h1>
+    <p>Lucky-S par videos aur photos ek jagah dekhein aur share karein. Shuru karne ke liye login karein ya naya account banayein.</p>
+    <div class="features"><div class="feature">▶ Videos</div><div class="feature">▧ Photos</div><div class="feature">♡ Likes</div><div class="feature">↗ Share</div></div>
+  </section>
+  <section class="card">
+    <div class="tabs"><button id="loginTab" class="tab active" onclick="setMode('login')">Login</button><button id="signupTab" class="tab" onclick="setMode('signup')">Sign up</button></div>
+    <h2 id="formTitle">Welcome back!</h2><p id="formSub" class="sub">Apne account mein login karein.</p>
+    <div id="error" class="error"></div>
+    <form id="authForm">
+      <div id="nameField" class="field" style="display:none"><label for="fullName">Aapka naam</label><input id="fullName" autocomplete="name" placeholder="Apna naam likhein"></div>
+      <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+      <div class="field"><label for="password">Password</label><input id="password" type="password" minlength="4" autocomplete="current-password" placeholder="Password likhein" required></div>
+      <button id="submitBtn" class="primary" type="submit">Login karein</button>
+    </form>
+    <p class="smallprint">Demo version: abhi login isi browser mein test hota hai. Real accounts, secure password login aur sab users ke liye online uploads chalane ke liye server/database aur cloud storage jodna zaroori hai.</p>
+  </section>
+</main>
+
+<main id="appPage" class="app">
+  <div class="app-head"><div><h1>Lucky-S Feed</h1><p id="welcome" style="color:var(--muted);margin:7px 0 0"></p></div><button class="secondary" onclick="logout()">Logout</button></div>
+  <div class="toolbar"><input id="searchBox" placeholder="Photo ya video search karein..." oninput="renderGallery()"><button class="secondary" onclick="document.getElementById('mediaFiles').click()">＋ Upload</button></div>
+  <section class="uploadbox"><h3>Apni photo ya video upload karein</h3><p>Photo/video select karein. Is demo mein media sirf isi browser par dikhega; doosre users ko dikhane ke liye online backend aur storage chahiye.</p><input id="mediaFiles" type="file" accept="image/*,video/*" multiple><input id="captionInput" type="text" placeholder="Caption likhein (optional)" style="display:block;width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;max-width:500px"><button class="primary" style="max-width:220px" onclick="uploadMedia()">Post karein</button></section>
+  <div id="gallery" class="gallery"></div>
+  <p class="smallprint">Website ko Google par dikhane ke liye GitHub Pages public rehna chahiye aur Google Search Console mein site verify karke indexing request bhejni hogi. Login ke peeche wala feed Google ko aam taur par nahi dikhega.</p>
+</main>
+<footer>© <span id="year"></span> Lucky-S • Made for sharing</footer>
+<script>
+let mode='login';let media=[];
+document.getElementById('year').textContent=new Date().getFullYear();
+function setMode(next){mode=next;document.getElementById('loginTab').classList.toggle('active',mode==='login');document.getElementById('signupTab').classList.toggle('active',mode==='signup');document.getElementById('nameField').style.display=mode==='signup'?'block':'none';document.getElementById('formTitle').textContent=mode==='signup'?'Create your account':'Welcome back!';document.getElementById('formSub').textContent=mode==='signup'?'Lucky-S par naya account banayein.':'Apne account mein login karein.';document.getElementById('submitBtn').textContent=mode==='signup'?'Account banayein':'Login karein';document.getElementById('password').autocomplete=mode==='signup'?'new-password':'current-password';showError('')}
+function showError(msg){const el=document.getElementById('error');el.textContent=msg;el.style.display=msg?'block':'none'}
+document.getElementById('authForm').addEventListener('submit',function(e){e.preventDefault();let email=document.getElementById('email').value.trim().toLowerCase(),pass=document.getElementById('password').value,name=document.getElementById('fullName').value.trim();let users={};try{users=JSON.parse(localStorage.getItem('luckys_demo_users')||'{}')}catch(_){}
+if(mode==='signup'){if(!name){showError('Kripya apna naam likhein.');return}if(users[email]){showError('Is email ka demo account pehle se hai. Login karein.');return}users[email]={name:name,password:pass};localStorage.setItem('luckys_demo_users',JSON.stringify(users));openApp(name,email)}
+else {if(!users[email]||users[email].password!==pass){showError('Demo account nahi mila. Pehle Sign up karein.');return}openApp(users[email].name,email)}});
+function openApp(name,email){localStorage.setItem('luckys_demo_session',JSON.stringify({name,email}));document.getElementById('loginPage').style.display='none';document.getElementById('appPage').style.display='block';document.getElementById('welcome').textContent='Namaste, '+name+'!';renderGallery();window.scrollTo(0,0)}
+function logout(){localStorage.removeItem('luckys_demo_session');document.getElementById('appPage').style.display='none';document.getElementById('loginPage').style.display='grid';document.getElementById('authForm').reset();setMode('login');window.scrollTo(0,0)}
+function uploadMedia(){const files=Array.from(document.getElementById('mediaFiles').files||[]);if(!files.length){alert('Pehle photo ya video select karein.');return}const caption=document.getElementById('captionInput').value.trim();files.forEach(file=>{const url=URL.createObjectURL(file);media.unshift({name:file.name,caption,url,type:file.type.startsWith('video/')?'video':'image'})});document.getElementById('mediaFiles').value='';document.getElementById('captionInput').value='';renderGallery()}
+function renderGallery(){const gallery=document.getElementById('gallery');const q=(document.getElementById('searchBox').value||'').toLowerCase();const filtered=media.filter(m=>(m.name+' '+m.caption).toLowerCase().includes(q));if(!filtered.length){gallery.innerHTML='<div class="empty" style="grid-column:1/-1"><h3>Abhi koi post nahi hai</h3><p>Upload button se apni pehli photo ya video add karein.</p></div>';return}gallery.innerHTML='';filtered.forEach(m=>{const card=document.createElement('article');card.className='item';const el=document.createElement(m.type==='video'?'video':'img');el.src=m.url;if(m.type==='video'){el.controls=true;el.playsInline=true}else el.alt=m.name;const cap=document.createElement('div');cap.className='caption';const title=document.createElement('strong');title.textContent=m.caption||m.name;const small=document.createElement('small');small.textContent=m.type==='video'?'Video':'Photo';cap.append(title,small);card.append(el,cap);gallery.append(card)})}
+try{const s=JSON.parse(localStorage.getItem('luckys_demo_session')||'null');if(s)openApp(s.name,s.email)}catch(_){}
+</script>
+</body>
+</html>
