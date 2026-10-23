@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyVideo - Video Platform</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif}
+header{position:sticky;top:0;background:#181818;padding:15px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.logo{color:#ff4545;font-size:23px;font-weight:bold}
+input{padding:11px;border-radius:22px;border:1px solid #555;background:#222;color:white;width:45%;max-width:450px}
+button{cursor:pointer;padding:10px 14px;border:0;border-radius:20px}
+.layout{display:flex}
+nav{width:180px;padding:15px;background:#181818;min-height:90vh}
+nav div{padding:13px 5px;cursor:pointer}
+nav div:hover{background:#333}
+main{padding:18px;flex:1;min-width:0}
+.categories{display:flex;gap:10px;overflow:auto;margin-bottom:20px}
+.categories button{background:#303030;color:white;white-space:nowrap}
+.categories button.active{background:white;color:black}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{cursor:pointer;min-width:0}
+.thumb{width:100%;aspect-ratio:16/9;background:#292929;border-radius:12px;object-fit:cover}
+.card h3{font-size:15px;margin:9px 0}
+.card p{color:#aaa;font-size:12px;margin:5px 0}
+#player{display:none;margin-bottom:20px}
+#player video{width:100%;max-height:480px;background:black}
+@media(max-width:700px){nav{width:65px;padding:6px;font-size:11px}nav div{padding:12px 0}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}header{flex-wrap:wrap}input{width:55%}main{padding:10px}}
+@media(max-width:420px){.grid{grid-template-columns:1fr}.logo{font-size:19px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">▶ MyVideo</div>
+<input id="search" placeholder="वीडियो खोजें..." oninput="render()">
+<button onclick="document.getElementById('upload').click()">＋ अपलोड</button>
+<input id="upload" type="file" accept="video/*" hidden onchange="uploadVideo(event)">
+</header>
+<div class="layout">
+<nav>
+<div onclick="filterVideos('All')">🏠 होम</div>
+<div onclick="filterVideos('Shorts')">⚡ शॉर्ट्स</div>
+<div onclick="filterVideos('Gaming')">🎮 गेमिंग</div>
+<div onclick="filterVideos('Music')">🎵 संगीत</div>
+<div onclick="filterVideos('History')">🕘 इतिहास</div>
+</nav>
+<main>
+<div class="categories">
+<button class="active" onclick="filterVideos('All')">सभी</button>
+<button onclick="filterVideos('Gaming')">गेमिंग</button>
+<button onclick="filterVideos('Music')">संगीत</button>
+<button onclick="filterVideos('Education')">शिक्षा</button>
+<button onclick="filterVideos('Shorts')">शॉर्ट्स</button>
+</div>
+<div id="player"></div>
+<div class="grid" id="videos"></div>
+</main>
+</div>
+<script>
+let videos=[
+{title:"सुंदर प्रकृति का वीडियो",channel:"Nature World",category:"Education",url:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",image:"https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=640"},
+{title:"गेमिंग की दुनिया",channel:"Game Zone",category:"Gaming",url:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",image:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=640"},
+{title:"संगीत और मनोरंजन",channel:"Music World",category:"Music",url:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",image:"https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=640"}
+];
+let category="All";
+function render(){
+let q=document.getElementById('search').value.toLowerCase();
+document.getElementById('videos').innerHTML=videos.filter(v=>(category==="All"||v.category===category)&&v.title.toLowerCase().includes(q)).map((v,i)=>`<div class="card"><img class="thumb" src="${v.image}" onclick="playVideo(${i})"><h3 onclick="playVideo(${i})">${v.title}</h3><p>${v.channel}</p><p>👍 <button onclick="likeVideo(this)">लाइक</button>　💬 कमेंट</p></div>`).join('');
+}
+function filterVideos(c){category=c;render()}
+function playVideo(i){
+let v=videos[i];let p=document.getElementById('player');
+p.style.display='block';p.innerHTML=`<video controls autoplay src="${v.url}"></video><h3>${v.title}</h3><p>${v.channel}</p><button onclick="alert('कमेंट सुविधा के लिए डेटाबेस जोड़ना होगा')">💬 कमेंट</button>`;
+p.scrollIntoView({behavior:'smooth'});
+}
+function likeVideo(b){b.innerText='👍 लाइक किया';}
+function uploadVideo(e){
+let f=e.target.files[0];if(!f)return;
+let url=URL.createObjectURL(f);
+videos.unshift({title:f.name,channel:"आपका चैनल",category:"All",url,image:""});
+render();
+let card=document.getElementById('videos').firstElementChild;
+if(card)card.querySelector('img').src=url;
+alert('वीडियो इस ब्राउज़र में जोड़ा गया है। अभी यह इंटरनेट पर दूसरे लोगों को दिखाई नहीं देगा।');
+}
+render();
+</script>
+</body>
+</html>
